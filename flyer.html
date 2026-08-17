@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Print Flyer — Santa Maria Under Watch</title>
+    <style>
+        @page { size: letter; margin: 0.5in; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fff; color: #111; width: 7.5in; margin: 0 auto; }
+
+        .flyer {
+            border: 3px solid #111;
+            padding: 0;
+            page-break-after: always;
+        }
+
+        .flyer-header {
+            background: #111;
+            color: #fff;
+            padding: 24px 32px;
+            text-align: center;
+        }
+
+        .flyer-header h1 {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .flyer-header .subtitle {
+            font-size: 14px;
+            color: #ccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .big-number-row {
+            display: flex;
+            border-bottom: 2px solid #111;
+        }
+
+        .big-number {
+            flex: 1;
+            text-align: center;
+            padding: 20px 8px;
+            border-right: 2px solid #111;
+        }
+
+        .big-number:last-child { border-right: none; }
+
+        .big-number .num {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .big-number .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #444;
+            margin-top: 4px;
+        }
+
+        .findings {
+            padding: 20px 28px;
+            border-bottom: 2px solid #111;
+        }
+
+        .findings h2 {
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .finding {
+            margin-bottom: 10px;
+            padding-left: 16px;
+            border-left: 3px solid #c00;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .finding strong { font-weight: 700; }
+
+        .action-section {
+            padding: 20px 28px;
+            border-bottom: 2px solid #111;
+        }
+
+        .action-section h2 {
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-list li {
+            font-size: 14px;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .action-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .flyer-footer {
+            background: #111;
+            color: #fff;
+            padding: 20px 28px;
+            text-align: center;
+        }
+
+        .flyer-footer .url {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .flyer-footer .tagline {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .council-section {
+            padding: 16px 28px;
+        }
+
+        .council-section h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .council-names {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .council-email {
+            font-size: 12px;
+            color: #444;
+        }
+
+        /* Print optimization */
+        @media print {
+            body { width: auto; }
+            .flyer { border-width: 2px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="flyer-header">
+            <h1>Your City Is Watching You</h1>
+            <div class="subtitle">Santa Maria's Hidden Surveillance Network</div>
+        </div>
+
+        <div class="big-number-row">
+            <div class="big-number">
+                <div class="num">135</div>
+                <div class="label">Cameras</div>
+            </div>
+            <div class="big-number">
+                <div class="num">22.5M</div>
+                <div class="label">Plates Read / Month</div>
+            </div>
+            <div class="big-number">
+                <div class="num">~200</div>
+                <div class="label">Reads Per Resident / Month</div>
+            </div>
+        </div>
+
+        <div class="findings">
+            <h2>What Public Records Revealed</h2>
+
+            <div class="finding">
+                <strong>104 cameras purchased secretly with COVID relief funds.</strong>
+                The original contract was for 31 cameras. An additional 104 were bought with federal ARPA money — with no public hearing or dedicated council vote on the expansion.
+            </div>
+
+            <div class="finding">
+                <strong>An officer searched plates 2 hours after their shift ended</strong>
+                with no case, no incident, and no documented reason. The city refuses to say whether any investigation followed.
+            </div>
+
+            <div class="finding">
+                <strong>A third of searched plates couldn't be justified.</strong>
+                Internal audits show officers routinely enter "test" or meaningless codes instead of case numbers. Auditors flagged searches they couldn't verify — but no consequences followed.
+            </div>
+
+            <div class="finding">
+                <strong>Your data is shared with 6 law enforcement agencies</strong>
+                through indefinite agreements with no expiration date, no public reporting, and no external oversight.
+            </div>
+        </div>
+
+        <div class="action-section">
+            <h2>What You Can Do</h2>
+            <ul class="action-list">
+                <li>Attend City Council meetings (1st & 3rd Tuesdays, 5:30 PM, City Hall)</li>
+                <li>Demand a public hearing on the ARPA camera expansion</li>
+                <li>Demand an independent audit of ALPR data access</li>
+                <li>Email the City Council directly (below)</li>
+                <li>Share this flyer with your neighbors</li>
+            </ul>
+        </div>
+
+        <div class="council-section">
+            <h3>Your City Council</h3>
+            <div class="council-names">
+                <strong>Mayor Alice Patino</strong> (At-Large) · 
+                <strong>Ricardo Batalla</strong> (District 1) · 
+                <strong>Gloria Flores</strong> (District 2) · 
+                <strong>Gloria Soto</strong> (District 3) · 
+                <strong>Maribel Aguilera</strong> (District 4)
+            </div>
+            <div class="council-email">Email all five: CityCouncil@cityofsantamaria.org</div>
+        </div>
+
+        <div class="flyer-footer">
+            <div class="url">jerry-compston.github.io/santa-maria-under-watch</div>
+            <div class="tagline">All findings sourced from public records obtained through the California Public Records Act</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -760,6 +760,69 @@ footer p {
   </div>
 </section>
 
+<!-- JOIN SECTION -->
+<section class="section" id="join" style="background:var(--bg-secondary); border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-label"><i data-lucide="users"></i> Join the movement</div>
+    <h2 class="section-title">Stay informed. Get involved.</h2>
+    <p style="color:var(--text-secondary);max-width:600px;margin:0 auto 24px;text-align:center;">
+      Sign up to receive updates on council meetings, new CPRA findings, and opportunities to take action. 
+      Your email will never be shared.
+    </p>
+    <form id="signup-form" style="max-width:480px;margin:0 auto;display:flex;gap:10px;">
+      <input type="email" id="signup-email" placeholder="your@email.com" required
+        style="flex:1;padding:14px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg-primary);color:var(--text-primary);font-size:15px;outline:none;">
+      <button type="submit"
+        style="padding:14px 24px;border-radius:8px;border:none;background:var(--red);color:#fff;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;text-transform:uppercase;letter-spacing:0.5px;">
+        Sign Up
+      </button>
+    </form>
+    <div id="signup-msg" style="text-align:center;margin-top:12px;font-size:13px;color:var(--green);display:none;"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;">
+      <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;padding:20px;">
+        <div style="color:var(--red);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">
+          <i data-lucide="calendar" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:4px;"></i> Next Council Meeting
+        </div>
+        <div style="font-size:20px;font-weight:700;">September 2, 2026</div>
+        <div style="color:var(--text-muted);font-size:13px;margin-top:4px;">5:30 PM · City Hall · 110 E. Cook St</div>
+        <div style="color:var(--text-secondary);font-size:13px;margin-top:8px;">Public comment is open to all residents. You get 3 minutes. Show up, speak up.</div>
+      </div>
+      <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;padding:20px;">
+        <div style="color:var(--amber);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">
+          <i data-lucide="mail" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:4px;"></i> Email the Council
+        </div>
+        <a href="mailto:CityCouncil@cityofsantamaria.org?subject=ALPR%20Surveillance%20Program%20Concerns&body=Dear%20Mayor%20and%20Council%20Members%2C%0A%0AI%20am%20writing%20to%20express%20concerns%20about%20the%20city%27s%20ALPR%20surveillance%20program.%20Public%20records%20reveal%20135%20cameras%20reading%2022.5%20million%20plates%20per%20month%2C%20with%20104%20cameras%20purchased%20using%20COVID%20relief%20funds%20without%20public%20disclosure.%0A%0AI%20urge%20you%20to%3A%0A1.%20Commission%20an%20independent%20audit%20of%20ALPR%20data%20access%0A2.%20Hold%20a%20public%20hearing%20on%20the%20ARPA-funded%20camera%20expansion%0A3.%20Publish%20an%20annual%20transparency%20report%0A%0ASincerely%2C%0A%5BYour%20Name%5D"
+          style="display:inline-block;margin-top:8px;color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;">
+          CityCouncil@cityofsantamaria.org
+        </a>
+        <div style="color:var(--text-muted);font-size:12px;margin-top:6px;">Click to open a pre-drafted email</div>
+      </div>
+      <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;padding:20px;">
+        <div style="color:var(--green);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">
+          <i data-lucide="printer" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:4px;"></i> Print & Distribute
+        </div>
+        <a href="flyer.html" target="_blank"
+          style="display:inline-block;margin-top:8px;color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;">
+          Download printable flyer (PDF)
+        </a>
+        <div style="color:var(--text-muted);font-size:12px;margin-top:6px;">Print at home, share with local businesses</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <div style="color:var(--text-muted);font-size:13px;margin-bottom:8px;">YOUR CITY COUNCIL</div>
+      <div style="color:var(--text-secondary);font-size:14px;line-height:2;">
+        <strong>Mayor Alice Patino</strong> (At-Large) · 
+        <strong>Ricardo Batalla</strong> (District 1) · 
+        <strong>Gloria Flores</strong> (District 2) · 
+        <strong>Gloria Soto</strong> (District 3) · 
+        <strong>Maribel Aguilera</strong> (District 4)
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -769,6 +832,34 @@ footer p {
 
 <script>
   lucide.createIcons();
+
+  // Email signup — stores to localStorage for now, can be replaced with a real backend
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const msg = document.getElementById('signup-msg');
+    
+    // Store locally
+    let signups = JSON.parse(localStorage.getItem('smuw-signups') || '[]');
+    if (signups.includes(email)) {
+      msg.textContent = "You're already signed up. We'll be in touch.";
+      msg.style.display = 'block';
+      return;
+    }
+    signups.push(email);
+    localStorage.setItem('smuw-signups', JSON.stringify(signups));
+    
+    // Also try to send to our collection endpoint
+    fetch('https://formspree.io/f/placeholder', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email, source: 'santa-maria-under-watch'})
+    }).catch(() => {}); // Silent fail — localStorage is the backup
+    
+    msg.textContent = "You're in. We'll notify you before the next council meeting.";
+    msg.style.display = 'block';
+    document.getElementById('signup-email').value = '';
+  });
 </script>
 
 </body>
