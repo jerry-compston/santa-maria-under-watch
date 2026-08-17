@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Maria Under Watch — Mass Surveillance Exposed</title>
+<meta name="description" content="135 ALPR cameras. 22.5 million plate reads per month. Exposed through public records. Learn what Santa Maria doesn't want you to know.">
+<meta property="og:title" content="Santa Maria Under Watch">
+<meta property="og:description" content="135 surveillance cameras tracking every vehicle in Santa Maria, CA. 22.5 million plate reads per month. Zero public disclosure.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #111115;
+  --bg-card: #16161a;
+  --bg-card-hover: #1c1c22;
+  --border: #2a2a32;
+  --text-primary: #e8e8ed;
+  --text-secondary: #9898a4;
+  --text-muted: #6a6a78;
+  --accent: #e53e3e;
+  --accent-dim: rgba(229, 62, 62, 0.12);
+  --accent-amber: #d69e2e;
+  --accent-amber-dim: rgba(214, 158, 46, 0.12);
+  --accent-blue: #4299e1;
+  --accent-blue-dim: rgba(66, 153, 225, 0.1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+}
+.nav-brand {
+  font-weight: 800; font-size: 0.95rem; letter-spacing: -0.02em;
+  color: var(--text-primary); text-decoration: none;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.nav-brand i { color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none; font-size: 0.82rem;
+  font-weight: 500; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+}
+
+/* ── SECTIONS ── */
+section { padding: 5rem 1.5rem; }
+.container { max-width: 1120px; margin: 0 auto; }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.section-label i { width: 14px; height: 14px; }
+
+.section-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1.2; margin-bottom: 1rem;
+}
+.section-subtitle {
+  color: var(--text-secondary); font-size: 1rem;
+  max-width: 600px; line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 5rem; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(229, 62, 62, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(66, 153, 225, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent-dim); border: 1px solid rgba(229, 62, 62, 0.2);
+  border-radius: 100px; padding: 0.35rem 1rem; margin-bottom: 2rem;
+  font-size: 0.75rem; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.hero-badge .pulse {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  line-height: 1.08; margin-bottom: 1.5rem;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), #f56565);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 1.15rem; color: var(--text-secondary);
+  line-height: 1.75; max-width: 620px; margin-bottom: 2.5rem;
+}
+.hero-stats {
+  display: flex; gap: 2.5rem; flex-wrap: wrap;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.hero-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem; font-weight: 700; color: var(--text-primary);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+/* ── NUMBERS ── */
+.numbers { background: var(--bg-secondary); }
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; margin-top: 3rem;
+}
+.number-card {
+  background: var(--bg-card); padding: 2rem;
+  transition: background 0.2s;
+}
+.number-card:hover { background: var(--bg-card-hover); }
+.number-card .icon-wrap {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+.number-card .icon-wrap i { width: 18px; height: 18px; }
+.number-card .icon-wrap.red { background: var(--accent-dim); color: var(--accent); }
+.number-card .icon-wrap.amber { background: var(--accent-amber-dim); color: var(--accent-amber); }
+.number-card .icon-wrap.blue { background: var(--accent-blue-dim); color: var(--accent-blue); }
+.number-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem; font-weight: 700; line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.number-label {
+  font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;
+}
+
+/* ── FINDINGS ── */
+.findings-list {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; margin-top: 3rem;
+}
+.finding {
+  background: var(--bg-card); padding: 1.75rem 2rem;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 1.25rem; align-items: start;
+  transition: background 0.2s;
+}
+.finding:hover { background: var(--bg-card-hover); }
+.finding-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.finding-icon i { width: 16px; height: 16px; }
+.finding-icon.critical { background: var(--accent-dim); color: var(--accent); }
+.finding-icon.warning { background: var(--accent-amber-dim); color: var(--accent-amber); }
+.finding-icon.info { background: var(--accent-blue-dim); color: var(--accent-blue); }
+.finding-title {
+  font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+.finding-detail {
+  font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;
+}
+.finding-tag {
+  display: inline-block; font-size: 0.68rem; font-weight: 600;
+  padding: 0.15rem 0.55rem; border-radius: 4px; margin-top: 0.6rem;
+  letter-spacing: 0.02em;
+}
+.tag-critical { background: var(--accent-dim); color: var(--accent); }
+.tag-warning { background: var(--accent-amber-dim); color: var(--accent-amber); }
+
+/* ── CAMERA MAP ── */
+.camera-section { background: var(--bg-secondary); }
+.corridor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem; margin-top: 3rem;
+}
+.corridor-group {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.corridor-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: -0.01em;
+}
+.corridor-header i { width: 14px; height: 14px; color: var(--text-muted); }
+.corridor-count {
+  margin-left: auto; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; color: var(--text-muted); font-weight: 500;
+}
+.corridor-cameras {
+  padding: 0.5rem 0; max-height: 280px; overflow-y: auto;
+}
+.corridor-cameras::-webkit-scrollbar { width: 4px; }
+.corridor-cameras::-webkit-scrollbar-track { background: transparent; }
+.corridor-cameras::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.camera-item {
+  padding: 0.45rem 1.25rem;
+  display: flex; align-items: center; gap: 0.65rem;
+  font-size: 0.78rem; color: var(--text-secondary);
+  transition: background 0.15s;
+}
+.camera-item:hover { background: var(--bg-card-hover); }
+.camera-dot {
+  width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
+}
+.camera-dot.smpd { background: var(--accent); }
+.camera-dot.ha { background: var(--accent-amber); }
+.camera-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--text-muted);
+  min-width: 36px;
+}
+
+/* ── ACTION ── */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; margin-top: 3rem;
+}
+.action-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.75rem;
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none; color: inherit; display: block;
+}
+.action-card:hover {
+  border-color: #3a3a44; background: var(--bg-card-hover);
+}
+.action-card .icon-wrap {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.action-card .icon-wrap i { width: 18px; height: 18px; }
+.action-card h3 {
+  font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem;
+}
+.action-card p {
+  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;
+}
+.action-card .arrow {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.78rem; font-weight: 600; color: var(--accent);
+  margin-top: 1rem;
+}
+.action-card .arrow i { width: 14px; height: 14px; }
+
+/* ── ABOUT / FOOTER ── */
+.about { border-top: 1px solid var(--border); }
+.about-content {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 700px) {
+  .about-content { grid-template-columns: 1fr; gap: 2rem; }
+}
+.about-text {
+  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
+}
+.about-text p + p { margin-top: 1rem; }
+.legal-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.75rem;
+}
+.legal-list li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;
+}
+.legal-list li i { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; margin-top: 0.2rem; }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem; text-align: center;
+}
+footer p {
+  font-size: 0.75rem; color: var(--text-muted);
+}
+
+/* ── UTILITIES ── */
+@media (max-width: 640px) {
+  section { padding: 3.5rem 1rem; }
+  .hero { min-height: auto; padding-top: 7rem; padding-bottom: 4rem; }
+  .hero-stats { gap: 1.5rem; }
+  .finding { grid-template-columns: 1fr; gap: 0.75rem; }
+  .finding-icon { display: none; }
+  .corridor-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <i data-lucide="scan-eye"></i>
+      UNDER WATCH
+    </a>
+    <ul class="nav-links">
+      <li><a href="#numbers">Numbers</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#cameras">Cameras</a></li>
+      <li><a href="#action">Take Action</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      INVESTIGATION &mdash; SANTA MARIA, CA
+    </div>
+    <h1>Your city is tracking <span class="highlight">every car you drive.</span></h1>
+    <p>
+      135 automated license plate readers blanket Santa Maria, logging 22.5 million plate reads every month. 
+      104 of those cameras were purchased with federal COVID relief funds &mdash; and never publicly disclosed. 
+      This is what we found through public records.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-value">135</div>
+        <div class="hero-stat-label">ALPR cameras</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">22.5M</div>
+        <div class="hero-stat-label">plate reads / month</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">~200</div>
+        <div class="hero-stat-label">reads per resident / month</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">$0</div>
+        <div class="hero-stat-label">public disclosure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BY THE NUMBERS -->
+<section class="numbers" id="numbers">
+  <div class="container">
+    <div class="section-label"><i data-lucide="bar-chart-3"></i> By the numbers</div>
+    <h2 class="section-title">The scale of surveillance</h2>
+    <p class="section-subtitle">
+      Every number below comes from documents obtained through the California Public Records Act.
+    </p>
+    <div class="numbers-grid">
+      <div class="number-card">
+        <div class="icon-wrap red"><i data-lucide="camera"></i></div>
+        <div class="number-value">135</div>
+        <div class="number-label">ALPR cameras deployed across Santa Maria by the police department</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap red"><i data-lucide="scan-line"></i></div>
+        <div class="number-value">22.5M</div>
+        <div class="number-label">License plate reads captured every month across the network</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap amber"><i data-lucide="user"></i></div>
+        <div class="number-value">~200</div>
+        <div class="number-label">Plate reads per resident per month in a city of ~110,000 people</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap amber"><i data-lucide="dollar-sign"></i></div>
+        <div class="number-value">$240,250+</div>
+        <div class="number-label">In known contracts with Flock Safety &mdash; likely much more with ARPA cameras</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap red"><i data-lucide="shield-alert"></i></div>
+        <div class="number-value">104</div>
+        <div class="number-label">Cameras secretly purchased with federal COVID relief (ARPA) funds</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap blue"><i data-lucide="clock"></i></div>
+        <div class="number-value">30 days</div>
+        <div class="number-label">Data retention period &mdash; your movements stored for a full month</div>
+      </div>
+      <div class="number-card">
+        <div class="icon-wrap blue"><i data-lucide="share-2"></i></div>
+        <div class="number-value">6</div>
+        <div class="number-label">Law enforcement agencies with access to the shared surveillance data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FINDINGS -->
+<section id="findings">
+  <div class="container">
+    <div class="section-label"><i data-lucide="file-search"></i> Key findings</div>
+    <h2 class="section-title">What the records revealed</h2>
+    <p class="section-subtitle">
+      Internal audits, contracts, and emails paint a picture of a surveillance program with minimal oversight and zero public transparency.
+    </p>
+    <div class="findings-list">
+
+      <div class="finding">
+        <div class="finding-icon critical"><i data-lucide="alert-triangle"></i></div>
+        <div>
+          <div class="finding-title">Off-duty officer searched plates with no documented reason</div>
+          <div class="finding-detail">
+            A June 2023 audit found an officer who searched license plates two hours after their shift ended. 
+            The officer entered the plate number itself as the "reason" for the search. No corresponding records 
+            existed in any police system &mdash; no CAD call, no case number, no report &mdash; to justify the query.
+          </div>
+          <span class="finding-tag tag-critical">Misuse</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon critical"><i data-lucide="alert-triangle"></i></div>
+        <div>
+          <div class="finding-title">8 plates searched in 4 minutes with reason "test"</div>
+          <div class="finding-detail">
+            A December 2022 audit flagged an officer who searched 8 different license plates in just 4 minutes, 
+            entering "test" as the reason for each query. The auditor was unable to verify whether 
+            these searches had any legitimate law enforcement purpose.
+          </div>
+          <span class="finding-tag tag-critical">Misuse</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon warning"><i data-lucide="alert-circle"></i></div>
+        <div>
+          <div class="finding-title">33% of spot-checked searches were unverifiable</div>
+          <div class="finding-detail">
+            In February 2023, one-third of the searches selected for audit could not be verified 
+            as having a legitimate law enforcement purpose. The audit process itself only reviews 
+            4 to 8 searches per quarter &mdash; negligible oversight for a system processing 22.5 million reads monthly.
+          </div>
+          <span class="finding-tag tag-warning">Oversight failure</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon warning"><i data-lucide="calendar-x"></i></div>
+        <div>
+          <div class="finding-title">18-month gap between audits</div>
+          <div class="finding-detail">
+            No audits were conducted between Q1 2024 and Q3 2025 &mdash; an 18-month window during which 
+            the surveillance system operated with zero documented oversight. During that period, 
+            the cameras captured an estimated 400+ million plate reads with no accountability review.
+          </div>
+          <span class="finding-tag tag-warning">Oversight failure</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon critical"><i data-lucide="eye-off"></i></div>
+        <div>
+          <div class="finding-title">104 cameras purchased with COVID funds &mdash; never disclosed</div>
+          <div class="finding-detail">
+            104 additional ALPR cameras were purchased using federal American Rescue Plan Act (ARPA) funds &mdash; 
+            money intended for COVID-19 relief. This expansion was never publicly disclosed or presented to 
+            the City Council. It was only discovered through internal emails obtained via CPRA request.
+          </div>
+          <span class="finding-tag tag-critical">Secret expansion</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon warning"><i data-lucide="file-x"></i></div>
+        <div>
+          <div class="finding-title">Housing Authority cameras may operate on an expired contract</div>
+          <div class="finding-detail">
+            19 ALPR cameras are deployed at Housing Authority properties. When asked to produce the 
+            governing contract, staff could not even locate the agreement file. These cameras may be 
+            operating without a valid, current contract.
+          </div>
+          <span class="finding-tag tag-warning">Missing contract</span>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon info"><i data-lucide="file-question"></i></div>
+        <div>
+          <div class="finding-title">Second Flock contract never provided despite 3 CPRA rounds</div>
+          <div class="finding-detail">
+            Records indicate a second contract with Flock Safety beginning October 2024 exists. 
+            Despite three rounds of California Public Records Act requests specifically asking for all 
+            contracts, this agreement has never been provided by the city.
+          </div>
+          <span class="finding-tag tag-warning">Withheld records</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAMERA MAP -->
+<section class="camera-section" id="cameras">
+  <div class="container">
+    <div class="section-label"><i data-lucide="map-pin"></i> Camera locations</div>
+    <h2 class="section-title">Where they're watching</h2>
+    <p class="section-subtitle">
+      Camera placements extracted from the Flock Safety dashboard via public records. 
+      Organized by corridor. <span style="display:inline-flex;align-items:center;gap:0.3rem;"><span class="camera-dot smpd" style="display:inline-block;"></span> SMPD</span> &nbsp;
+      <span style="display:inline-flex;align-items:center;gap:0.3rem;"><span class="camera-dot ha" style="display:inline-block;"></span> Housing Authority</span>
+    </p>
+    <div class="corridor-grid">
+
+      <!-- Broadway -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-up-down"></i>
+          Broadway (N/S)
+          <span class="corridor-count">6 cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">001</span> SB south of Taylor</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">002</span> NB north of Preisker</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">013</span> NB north of Santa Maria Way</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">027</span> NB north of Fesler</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">028</span> SB south of Orange</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">090</span> SB south of Chapel</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">092</span> SB north of Santa Maria Way</div>
+        </div>
+      </div>
+
+      <!-- Betteravia -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-left-right"></i>
+          Betteravia Rd (E/W)
+          <span class="corridor-count">3 cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">010</span> WB west of A St</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">019</span> WB west of US 101</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">037</span> EB west of Broadway</div>
+        </div>
+      </div>
+
+      <!-- Main St -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-left-right"></i>
+          Main St (E/W)
+          <span class="corridor-count">3 cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">006</span> EB west of Blosser</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">007</span> WB west of Kathleen</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">057</span> EB west of Town Center East</div>
+        </div>
+      </div>
+
+      <!-- Other SMPD -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="map-pin"></i>
+          Other SMPD Locations
+          <span class="corridor-count">4 cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">003</span> SB Railroad north of Taylor</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">005</span> EB Donovan east of College</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">043</span> EB Cook west of Railroad</div>
+          <div class="camera-item"><span class="camera-dot smpd"></span><span class="camera-id">---</span> + 118 additional SMPD cameras not listed</div>
+        </div>
+      </div>
+
+      <!-- Chapel -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-left-right"></i>
+          Chapel St (E/W)
+          <span class="corridor-count">4 HA cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA01</span> WB west of Bradley</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA02</span> EB west of Bradley</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA12</span> EB west of Vine</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA13</span> WB east of McClelland</div>
+        </div>
+      </div>
+
+      <!-- Depot -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-up-down"></i>
+          Depot St (N/S)
+          <span class="corridor-count">3 HA cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA08</span> SB north of Mill</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA09</span> SB north of Main</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA10</span> NB north of Mill</div>
+        </div>
+      </div>
+
+      <!-- Inger / Williams -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="arrow-left-right"></i>
+          Inger & Williams (E/W)
+          <span class="corridor-count">4 HA cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA04</span> WB Inger east of Broadway</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA07</span> EB Inger east of Broadway</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA14</span> EB Williams west of Broadway</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA16</span> WB Williams at Gunderson</div>
+        </div>
+      </div>
+
+      <!-- Other HA -->
+      <div class="corridor-group">
+        <div class="corridor-header">
+          <i data-lucide="map-pin"></i>
+          Other Housing Authority
+          <span class="corridor-count">5 HA cameras</span>
+        </div>
+        <div class="corridor-cameras">
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA03</span> EB Cox east of Blosser</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA11</span> SB Alley (Chapel &amp; Vine)</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA17</span> WB Pine north of Donovan</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA18</span> EB Alley (Elm to Pine)</div>
+          <div class="camera-item"><span class="camera-dot ha"></span><span class="camera-id">HA19</span> SB Pine south of Cox</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU CAN DO -->
+<section id="action">
+  <div class="container">
+    <div class="section-label"><i data-lucide="megaphone"></i> Take action</div>
+    <h2 class="section-title">What you can do</h2>
+    <p class="section-subtitle">
+      Transparency starts with informed residents. Here is how you can push for accountability.
+    </p>
+    <div class="action-grid">
+
+      <a href="https://www.cityofsantamaria.org/government/city-council/city-council-meetings" target="_blank" rel="noopener" class="action-card">
+        <div class="icon-wrap red"><i data-lucide="landmark"></i></div>
+        <h3>Attend City Council</h3>
+        <p>Show up and speak during public comment. Council needs to hear from residents who want transparency on surveillance spending and oversight.</p>
+        <span class="arrow"><i data-lucide="arrow-right"></i> Council meeting schedule</span>
+      </a>
+
+      <a href="https://www.cityofsantamaria.org/government/city-council/city-council-members" target="_blank" rel="noopener" class="action-card">
+        <div class="icon-wrap amber"><i data-lucide="mail"></i></div>
+        <h3>Contact Your Council Member</h3>
+        <p>Ask your representative what they knew about the ARPA-funded camera expansion and why it was never brought before the council for public discussion.</p>
+        <span class="arrow"><i data-lucide="arrow-right"></i> Find your council member</span>
+      </a>
+
+      <div class="action-card" onclick="if(navigator.share){navigator.share({title:'Santa Maria Under Watch',url:window.location.href})}else{navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))}">
+        <div class="icon-wrap blue"><i data-lucide="share-2"></i></div>
+        <h3>Share This Page</h3>
+        <p>The more residents who see this information, the harder it becomes to ignore. Share with neighbors, local groups, and community organizations.</p>
+        <span class="arrow"><i data-lucide="arrow-right"></i> Copy link or share</span>
+      </div>
+
+      <a href="https://oag.ca.gov/government/public-records" target="_blank" rel="noopener" class="action-card">
+        <div class="icon-wrap blue"><i data-lucide="file-text"></i></div>
+        <h3>File a CPRA Request</h3>
+        <p>The California Public Records Act gives you the right to request government documents. Ask for contracts, audit reports, camera locations, and data sharing agreements.</p>
+        <span class="arrow"><i data-lucide="arrow-right"></i> Learn about CPRA</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label"><i data-lucide="info"></i> About this project</div>
+    <h2 class="section-title">How we got this information</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          Every finding on this page is based on documents provided by the City of Santa Maria 
+          in response to requests filed under the California Public Records Act (Government Code 
+          Section 6250 et seq.).
+        </p>
+        <p>
+          This project exists because residents deserve to know how their city deploys surveillance 
+          technology, how it is funded, and whether meaningful safeguards exist to prevent misuse. 
+          The public record shows that, in Santa Maria, the answers are troubling.
+        </p>
+        <p>
+          No information on this page was obtained through unauthorized access or leaked documents. 
+          This is your government's own paperwork.
+        </p>
+      </div>
+      <div>
+        <ul class="legal-list">
+          <li><i data-lucide="check-circle"></i> All data sourced from official CPRA responses</li>
+          <li><i data-lucide="check-circle"></i> Audit findings quoted from city-produced audit documents</li>
+          <li><i data-lucide="check-circle"></i> Contract amounts from executed agreements on file</li>
+          <li><i data-lucide="check-circle"></i> Camera locations from Flock Safety dashboard exports</li>
+          <li><i data-lucide="check-circle"></i> ARPA spending revealed through internal email correspondence</li>
+          <li><i data-lucide="check-circle"></i> No leaked or unauthorized documents used</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Santa Maria Under Watch &mdash; A public transparency project. All information obtained through the California Public Records Act.</p>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>
